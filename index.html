@@ -1,66 +1,55 @@
 <!DOCTYPE HTML>
+<!-- Started 03-10-21, utilizes OpenWeather API, jQuery, Bootstrap, local storage -->
 <html lang="english">
     <head>
         <title>Server Side API's - Weather App!</title>
-        <meta charset="UTF-8" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     </head>
     <body>
 
-    <div class="jumbotron bg-dark text-light p-5 d-flex justify-content-center">
-        <div class="row">
-            <h1 class="col-md-12 display-4 d-flex justify-content-center">Search the Library of Congress</h1><br>
-            <h2 class="col-md-12 lead d-flex justify-content-center">Using their amazing API!</h2>
-        </div>
+    <div class="jumbotron bg-dark text-light p-4 d-flex justify-content-center">
+            <h1 class="col-md-12 display-4 d-flex justify-content-center p-0 m-0">Weather App!</h1>
     </div>
 
     <!-- Page content container -->
     <div class="row p-5">
-        <!--Card with form -->
+        <!--Search box for city-->
         <div class="col-md-3">
             <div class="card">
-                <h5 class="card-header bg-dark text-light">Instructions</h5>
+                <h5 class="card-header bg-dark text-light">What's the weather in...</h5>
                 <div class="card-body">
-                    <h5 class="card-title py-2">Enter your criteria below</h5>
                     <form>
-                        Search for:
                         <input type="text" class="form-control my-1" id="query"></input>
-                        Media type:
-                        <select class="form-control my-1" id="format">
-                            <option>All</option>
-                            <option>Maps</option>
-                            <option>Audio</option>
-                            <option>Photos</option>
-                            <option>Newspapers</option>
-                            <option>Film-and-videos</option>
-                            <option>Notated-music</option>
-                            <option>Websites</option>
-                        </select>
                         <button type="button" class="btn btn-primary my-2" id="search_btn">
-                        Search!
+                        Search
                         </button> 
                     </form>
                       
                 </div>
             </div>
+            <!-- List of past searches -->
+            <div class="card mt-2">
+                <h5 class="card-header bg-dark text-light">Past searches</h5>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <tr><td>Austin</td></tr>
+                        <tr><td>Austin</td></tr>
+                        <tr><td>Austin</td></tr>
+                        <tr><td>Austin</td></tr>
+                    </table>
+                    <button type="submit" class="btn btn-primary">Clear</button>
+                </div>
+            </div>
         </div>
-        <!-- Project table -->
-        <div class="col-md-9">
-            <table class="table table-striped" id="project_table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Subject</th>
-                        <th scope="col">Read More</th>
-                    </tr>
-                </thead>
-                <tbody id="table_body">
-                    <!-- Insert content here-->
-                </tbody>
-            </table>
+        <!-- Project -->
+        <div class="col-md-9 m-0 p-0">
+              <div class="card">
+                    <h5 class="card-header bg-dark text-light"><!-- City Name --></h5>
+                    <div class="card-body">
+                                            
+                    </div>
+                </div>
         </div>
     </div>
 
@@ -71,17 +60,8 @@
  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-    <script>
-        // write short script to redirect users to results page w/ user input
-        $('#search_btn').on('click', function(e) {
-            e.preventDefault();
-            var userQuery = $('#query').val();
-            var mediaFormat = $('#format').val();
-
-            var addressAppend = '?q=' + userQuery + '&fo=' + mediaFormat;
-            document.location.replace('search_results.html'+addressAppend);
-        });
-    </script>
+    
+    <!-- Link to my script -->
+    <script src="assets/js/script.js"></script>
 </body>
 </HTML>
