@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
         <style>
             ul {list-style: none; padding: 0px; margin: 1px;}
+            #past_searches li {margin-top: 5px; cursor: pointer;}
+            #past_searches li:hover {text-decoration: underline;}
         </style>
     </head>
     <body>
@@ -31,17 +33,14 @@
                       
                 </div>
             </div>
-            <!-- List of past searches -->
+            <!-- Container for past searches -->
             <div class="card mt-2">
                 <h5 class="card-header bg-dark text-light">Past searches</h5>
                 <div class="card-body">
-                    <table class="table table-striped">
-                        <tr><td>Austin</td></tr>
-                        <tr><td>Austin</td></tr>
-                        <tr><td>Austin</td></tr>
-                        <tr><td>Austin</td></tr>
-                    </table>
-                    <button type="submit" class="btn btn-primary" id="clear_btn">Clear</button>
+                    <ul id="past_searches">
+                            <!-- List of past searches -->
+                    </ul>
+                    <button type="submit" class="btn btn-primary mt-3" id="clear_btn">Clear</button>
                 </div>
             </div>
         </div>

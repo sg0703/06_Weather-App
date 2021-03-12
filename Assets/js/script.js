@@ -1,15 +1,17 @@
 // 06 - Server Side API's: Weather App Homework
 // Sam Gates: 03-10-21
 
-// clear_btn 
-// search_btn
-// function for list item click (see quiz HW)
-
 $('#search_btn').on('click', function(e) {
     console.log("YAY");
     e.preventDefault();
     
     showResults($('#city').val());
+});
+
+$('#clear_btn').on('click', function(e) {
+    console.log("less yay");
+    e.preventDefault();
+    clearPastSearches();
 });
 
 displayStart();
@@ -19,6 +21,7 @@ function displayStart() {
     $('#forecast_section').attr("style","display: none");
     $('#city_name').html("Welcome to the very exciting Weather App!");
     $('#city_content').html("Please use the search bar to the left to continue.");
+    displayPastSearches();
 }
 
 // show data user requested (relies on functions below)
@@ -60,6 +63,7 @@ function showResults(city) {
         .then(function(data) { 
             displayToday(data,city); // display current weather info to page
             displayForecast(data,city); // display forecase to page
+            addPastSearch(city); // add to list of stored searches
         });
 }
 
@@ -93,7 +97,7 @@ function displayToday(data,city) {
     // still have to apply icon for weather, see if UV good or bad
 
     // display date/time
-    var time = moment().format('MM/DD/YY');
+    var time = getDate(data.current.dt);
 
     // display city name at top of content section, along with image 
     var imageEl = document.createElement("img");
@@ -157,20 +161,81 @@ function displayForecast(data) {
 }
 
 // stores past searches in localstorage
-function addPastSearch() {
-
+function addPastSearch(city) {
+   // check localstorage first, if not there then create
+   if (!localStorage.getItem("pastSearches")) {
+       // push newScore object into array, then
+       var pastSearches = [];    
+    
+       pastSearches.push(city);
+       // write it to local storage
+       localStorage.setItem("pastSearches",JSON.stringify(pastSearches));
+   }
+   // if task list already exists in localstorage, see if this specific hour is in there. if it is, modify it's current contents. if it's not, add it and then save all data back into local storage
+   else {
+       // extract data from localstorage
+       var pastSearches = JSON.parse(localStorage.getItem("pastSearches"));
+       //only add if it's not already there
+       if (!alreadySaved(city,pastSearches)) {
+            // add new city to list
+            pastSearches.push(city);
+            // re-insert data into local storage
+            localStorage.setItem("pastSearches",JSON.stringify(pastSearches));
+       }
+   }
+   displayPastSearches();
 }
 
 // retrives past searches, uses displayData to write to page
-function retrievePastSearches() {
+function displayPastSearches() {
+    $('#past_searches').html("");
 
+    // only do something if local storage objects exist, otherwise do nothing (ie leave blank)
+    if (localStorage.getItem("pastSearches")) {
+        // extract data from localstorage
+        var pastSearches = JSON.parse(localStorage.getItem("pastSearches"));
+
+        for (i = 0; i < pastSearches.length; i++) {
+            // build list item, add to list
+            var listItem = document.createElement("li");
+            listItem.setAttribute("id","search"+i);
+            listItem.setAttribute("data-descr",pastSearches[i]);
+            listItem.innerHTML = pastSearches[i]; 
+            $('#past_searches').append(listItem);
+
+            // handle when one link is clicked on
+            listItem.addEventListener("click", function() {
+                console.log($('#search'+i));
+                showResults(this.getAttribute("data-descr"));
+            });
+        }
+    }
+    // set default value
+    else {
+        $('#past_searches').html("None yet!");
+    }
 }
 
 // clears search history
 function clearPastSearches() {
-    
+    localStorage.removeItem("pastSearches");
+    location.reload();
 }
 
 function getDate(timestamp) {
     return moment.unix(timestamp).format('MM/DD/YY');
+}
+
+// takes city and compares it to each item in array, if present returns true
+function alreadySaved(city,data) {
+    var present = false;
+    city = city.toUpperCase();
+
+    for (i = 0; i < data.length; i++) {
+        if (data[i].toUpperCase() === city) {
+            present = true;
+        }
+    }
+
+    return present;
 }
