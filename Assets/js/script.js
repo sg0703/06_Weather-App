@@ -1,6 +1,7 @@
 // 06 - Server Side API's: Weather App Homework
 // Sam Gates: 03-10-21
 
+// event handling for submit and clear buttons
 $('#search_btn').on('click', function(e) {
     console.log("YAY");
     e.preventDefault();
@@ -14,6 +15,7 @@ $('#clear_btn').on('click', function(e) {
     clearPastSearches();
 });
 
+// show user the start page
 displayStart();
 
 // display initial start page
@@ -24,7 +26,7 @@ function displayStart() {
     displayPastSearches();
 }
 
-// show data user requested (relies on functions below)
+// show data user requested 
 function showResults(city) {
     var cityLat = '';
     var cityLong = '';
@@ -39,8 +41,9 @@ function showResults(city) {
         .then(function (response) {
             // Check the console first to see the response.status
             console.log(response.status);
-            if(response.status === 404) {
-                //error response!
+            if(response.status != 'OK') {
+                $('#city_name').html("Error!");
+                $('#city_content').html("Your search was unsuccessful. Please try another city.");
             }
             return response.json();
         })    
@@ -54,8 +57,9 @@ function showResults(city) {
            return fetch(forecastRequest, {mode: 'cors'});
         })
         .then(function(response) {
-            if(response.status === 404) {
-                //error response!
+            if(response.status != 'OK') {
+                $('#city_name').html("Error!");
+                $('#city_content').html("Something went wrong. Please try another city.");
             }
             return response.json();
         })
