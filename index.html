@@ -6,7 +6,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
         <style>
-            ol {style: none;}
+            ul {list-style: none; padding: 0px; margin: 1px;}
         </style>
     </head>
     <body>
@@ -48,9 +48,21 @@
         <!-- Data -->
         <div class="col-md-9 m-0 p-0">
               <div class="card">
-                    <h5 class="card-header bg-dark text-light" id="city_name"><!-- City Name --></h5>
+                    <h5 class="card-header bg-secondary text-light" id="city_name"><!-- City Name --></h5>
                     <div class="card-body" id="city_content">
-                                    
+                     <!--Put current weather data here-->               
+                    </div>
+                </div>
+
+                <div class="card my-2" id="forecast_section">
+                    <h5 class="card-header bg-secondary text-light">5 Day Forecast</h5>
+                    <div class="card-body">
+                     <div class="container"> 
+                         <!-- This is container for set of forecast cards-->
+                         <div class="row justify-content-center" id="city_forecast">
+                             <!--Forecast cards go below-->
+                         </div>
+                     </div>
                     </div>
                 </div>
         </div>
