@@ -38,7 +38,7 @@ function showResults(city) {
     fetch(getCoordinatesUrl, {mode: 'cors'})
         .then(function (response) {
             // Check the console first to see the response.status
-            if(response.status != 'OK') {
+            if(response.status != 200) {
                 console.log(response.status);
                 $('#city_name').html("Error!");
                 $('#city_content').html("Your search was unsuccessful. Please try another city.");
@@ -55,7 +55,7 @@ function showResults(city) {
            return fetch(forecastRequest, {mode: 'cors'});
         })
         .then(function(response) {
-            if(response.status != 'OK') {
+            if(response.status != 200) {
                 $('#city_name').html("Error!");
                 $('#city_content').html("Something went wrong. Please try another city.");
             }
