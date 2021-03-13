@@ -34,7 +34,7 @@ function showResults(city) {
     // API key for sam.j.gates@gmail.com
     var apiKey = '2d1455849cad8d73b4d9605338104f0f';
 
-    getCoordinatesUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=1&appid=' + apiKey;
+    getCoordinatesUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=1&appid=' + apiKey;
 
     // use promise chain to 1. get coordinates using geo decode API, THEN 2. get all weather data needed for project from one call API 
     fetch(getCoordinatesUrl, {mode: 'cors'})
