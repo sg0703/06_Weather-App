@@ -94,7 +94,7 @@ function displayToday(data,city) {
         styledUV = '<span style=\'background-color: red; padding: 5px;\'>' + UV;
     }
 
-    var weatherIconUrl = 'http://openweathermap.org/img/wn/' +  data.current.weather[0].icon + '.png';
+    var weatherIconUrl = 'https://openweathermap.org/img/wn/' +  data.current.weather[0].icon + '.png';
 
     var weatherAlt = data.current.weather[0].description;
 
