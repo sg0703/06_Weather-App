@@ -139,7 +139,7 @@ function displayForecast(data) {
         cardBody.setAttribute("class","card-body p-2");
 
         // build src link for image with alt descr
-        var weatherIconUrl = 'http://openweathermap.org/img/wn/' +  data.daily[i].weather[0].icon + '.png'; 
+        var weatherIconUrl = 'https://openweathermap.org/img/wn/' +  data.daily[i].weather[0].icon + '.png'; 
         var weatherIconDescr = data.daily[0].weather[0].description;
         var weatherIcon = document.createElement("img");
         weatherIcon.setAttribute("src",weatherIconUrl);
