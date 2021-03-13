@@ -1,90 +1,40 @@
-# 06 Server-Side APIs: Weather Dashboard
+## 06 - Server Side API's: Weather App 
 
-## Your Task
+## Description
 
-Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+For this homework assignment, I created a weather app that utilizes the OpenWeather API to search for a specific city and return weather data, including a 5 day forecast, for that city. 
 
-Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that provides basic setup and usage instructions. You will use `localStorage` to store any persistent data.
+The user is greeted with a starting web page that asks them to enter a city in a search box. Below the search box is a list of past searches. If no past searches exist, then the user will see a default message in that space. 
 
-## User Story
+Once the user searches for a city, if the search is successful, it is immediately added to the list of past searches. The user will see a page with the current conditions, including a small icon representing those conditions, in the main content section under a header with the city name and the date. The user will see temperature, humidity, wind speed, and the UV index with a color code indicating how safe the UV level is for that day. 
 
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
+Below the main content section with the current conditions, the user will see a 5 day forecast complete with dates, a small icon representing predicted conditions on that day, the temperature and the humidity for that day. 
 
-## Acceptance Criteria
+If the user wants to clear the list of past searches, there is a clear button for that purpose. Once clicked, it will immediately remove items from the list and take the user back to the start page. 
 
-```
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-```
+I utilized jQuery, Bootstrap, moment.js, and the OpenWeather API for this project. 
 
-## Mock-Up
+## Actions taken
 
-The following image shows the web application's appearance and functionality:
+1. Utilized HTML and Bootstrap to create a page with placeholders to insert data and a form to gather user input. 
+2. Researched and implemented the OpenWeather Geocoding API to get latitude/longitude coordinates for user queries
+3. Researched and implemented the OpenWeather One Call API to get current and forecast weather data 
+4. Implemented error handling to display a page if the API cannot locate data for the user input
+5. Utilized jQuery to gather user input and to dynamically generate the page
+6. Utilized moment.js to handle date formatting from API data
+7. Wrote displayStart() to generate a starter page
+8. Wrote showResults() to search both API's and call supporting functions to display page from API data
+9. displayToday() and displayForecast() create content for the current conditions and the forecast, display to page
+10. Created addPastSearch(), displaySearches(), and clearPastSearches() to store, retrieve, display and erase past searches from local storage
+11. Created getDate to quickly format dates using moment.js
+12. Created alreadySaved() to check local storage object for search so that it isn't entered twice
 
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./Assets/06-server-side-apis-homework-demo.png)
+## Link to deployed project
 
-## Grading Requirements
+See the deployed project by following this link: https://sg0703.github.io/05_Work-Day-Scheduler/
+See the code repository here: https://github.com/sg0703/05_Work-Day-Scheduler
 
-This homework is graded based on the following criteria: 
+## Screenshots
 
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria plus the following:
-
-    * Uses the OpenWeather API to retrieve weather data.
-
-    * Uses `localStorage` to store persistent data.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the homework instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality readme file with description, screenshot, and link to deployed application.
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository. Give the repository a unique name and include a readme describing the project.
-
-- - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+![alt text](assets/images/screen1.png)
+![alt text](assets/images/screen2.png)
