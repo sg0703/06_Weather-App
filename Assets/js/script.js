@@ -3,14 +3,12 @@
 
 // event handling for submit and clear buttons
 $('#search_btn').on('click', function(e) {
-    console.log("YAY");
     e.preventDefault();
     
     showResults($('#city').val());
 });
 
 $('#clear_btn').on('click', function(e) {
-    console.log("less yay");
     e.preventDefault();
     clearPastSearches();
 });
@@ -40,7 +38,6 @@ function showResults(city) {
     fetch(getCoordinatesUrl, {mode: 'cors'})
         .then(function (response) {
             // Check the console first to see the response.status
-            console.log(response.status);
             if(response.status != 'OK') {
                 $('#city_name').html("Error!");
                 $('#city_content').html("Your search was unsuccessful. Please try another city.");
@@ -73,8 +70,6 @@ function showResults(city) {
 
 // display today's current weather for location
 function displayToday(data,city) {
-    console.log(data);
-
     // find data points for the following
     var temperature = data.current.temp;
     var humidity = data.current.humidity;
@@ -209,7 +204,6 @@ function displayPastSearches() {
 
             // handle when one link is clicked on
             listItem.addEventListener("click", function() {
-                console.log($('#search'+i));
                 showResults(this.getAttribute("data-descr"));
             });
         }
