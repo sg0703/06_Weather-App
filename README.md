@@ -31,10 +31,11 @@ I utilized jQuery, Bootstrap, moment.js, and the OpenWeather API for this projec
 
 ## Link to deployed project
 
-See the deployed project by following this link: https://sg0703.github.io/05_Work-Day-Scheduler/
-See the code repository here: https://github.com/sg0703/05_Work-Day-Scheduler
+See the deployed project by following this link: https://sg0703.github.io/06_Weather-App/
+See the code repository here: https://github.com/sg0703/06_Weather-App
 
 ## Screenshots
 
-![alt text](assets/images/screen1.png)
-![alt text](assets/images/screen2.png)
+![first screenshot](Assets/images/screen1.png)
+![second screenshot](Assets/images/screen2.png)
+![third screenshot](Assets/images/screen3.png)
