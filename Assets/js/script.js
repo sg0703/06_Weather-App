@@ -39,6 +39,7 @@ function showResults(city) {
         .then(function (response) {
             // Check the console first to see the response.status
             if(response.status != 'OK') {
+                console.log(response.status);
                 $('#city_name').html("Error!");
                 $('#city_content').html("Your search was unsuccessful. Please try another city.");
             }
