@@ -13,6 +13,11 @@ $('#clear_btn').on('click', function(e) {
     clearPastSearches();
 });
 
+// clear out search box when user clicks into it 
+$('#city').on('focus', function() {
+    $('#city').val('');
+});
+
 // show user the start page
 displayStart();
 
