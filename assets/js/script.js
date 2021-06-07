@@ -35,7 +35,7 @@ function showResults(city) {
     var cityLong = '';
 
     // API key for sam.j.gates@gmail.com
-    var apiKey = '2d1455849cad8d73b4d9605338104f0f';
+    var apiKey = '4bfb9823ec8ce86df28bd33535f59440';
 
     getCoordinatesUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=1&appid=' + apiKey;
 
